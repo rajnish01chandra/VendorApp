@@ -12,5 +12,6 @@ urlpatterns = patterns('vendor.views',
     url(r'^api/partner/order/action', 'action',name='action'),
     url(r'^api/partner/order/all', 'getOrders', name='getOrders'),
     url(r'^api/partner/order/active', 'activeOrders',name='activeOrders'),
-    url(r'^api/partner/order/orderDetail', 'orderDetail',name='orderDetail')
+    url(r'^api/partner/order/orderDetail', 'orderDetail',name='orderDetail'),
+    url(r'^api/partner/order/fillDB', 'fillDB',name='fillDB')
 )

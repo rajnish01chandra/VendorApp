@@ -81,8 +81,7 @@ CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 CELERYBEAT_SCHEDULE = {
     'every-minute': {
         'task': 'schedules.tasks.updateOrder',
-        'schedule': timedelta(seconds=30),
-        'args':(1,120)
+        'schedule': timedelta(seconds=30)
     },
 }
 TIME_ZONE = 'Asia/Kolkata'

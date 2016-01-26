@@ -4,21 +4,40 @@
 	<title>Orders</title>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-<ul class="nav nav-tab nav-justified" >
-<li style = "font-weight: bold; font-size:30px" ><a href="{% url 'vendor:getOrders'%}"> Past Order</a></li>
-<li class="active" ><a href="{% url 'vendor:activeOrders'%}" style = "font-weight: bold; font-size:30px">Active Order</a></li> 
+<ul class="nav nav-pills nav-justified" >
+<li {% if page and page == "all" %} class="active" {% endif %} style = "font-weight: bold; font-size:30px"><a href="{% url 'vendor:getOrders'%}"> Past Order</a></li>
+<li {% if page and page == "active" %} class="active" {% endif %} style = "font-weight: bold; font-size:30px"><a href="{% url 'vendor:activeOrders'%}">Active Order</a></li> 
 </ul>
 {% if orders %}
 	<h1> {{ orders.0.vendor.name }} </h1><br>
 	<ul class="list-group">
+	<table class="table table-bordered">
+		<tr>
+			<th>#Order Id</th>
+			<th>Time</th>
+			<th>Status</th>
+			<th>Show Details</th>
+		</tr>
+
 	{% for order in orders %}
-		<li class="list-group-item"> {{ order.id }} , <script type="text/javascript"> var d=new Date({{order.orderTime}} * 1000); document.write(d.toLocaleString())</script> , {{ order.get_action_display }} , 
-		<a href="orderDetail?orderId={{ order.id }}"> Show Details </a> </li>
+		
+		<tr>
+			<td>{{ order.id }}</td>
+			<td>
+				<script type="text/javascript"> var d=new Date({{order.orderTime}} * 1000); document.write(d.toLocaleString())
+				</script>
+			</td>
+			<td>{{ order.get_action_display }}</td>
+			<td><a href="orderDetail?orderId={{ order.id }}">Show</a></td>
+		</tr>
+		
 	{% endfor %}
+	</table>
 	</ul>
+{% else %}
+	<h1> No orders to show </h1>
 {% endif %}
 </body>
 </html>
