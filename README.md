@@ -25,3 +25,7 @@ http://localhost:8000/vendor/api/partner/order/all
 
 To view all active orders:
 http://localhost:8000/vendor/api/partner/order/active
+
+
+Info:
+Autorejects in 120 seconds.
