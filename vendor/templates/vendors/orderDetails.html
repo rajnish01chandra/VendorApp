@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order Details</title>
+	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<table class="table table-bordered">
+<thead>
+	<tr>
+		<th><h3 style = "font-weight: bold">#OrderId {{order.id}} - {{orderItems.count}} items : <div style ="float: right"><script type="text/javascript"> var d=new Date({{order.orderTime}} * 1000); document.write(d.toLocaleString())</script></div> </h3></th>
+		<th>Quantity</th>
+	</tr>
+</thead>
+{% for item in orderItems %}
+<tbody>
+	<tr>
+		<td>
+			{{item.foodItem.name}} ( {{item.foodItem.category}} )
+		</td>
+		<td>
+			{{item.quantity}}
+		</td>
+	</tr>
+</tbody>
+{% endfor %}
+</table>
+
+<h3>Total : {{total}}</h3>
+
+<form action='action' method='POST'>
+{% csrf_token %}
+<input type=hidden name=orderId value={{order.id}} />
+<input type=submit class="btn btn-primary" name=accept value=accept />
+<input type=submit class="btn btn-primary" name=reject value=reject />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Orders</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<ul class="nav nav-tab nav-justified" >
+<li style = "font-weight: bold; font-size:30px" ><a href="{% url 'vendor:getOrders'%}"> Past Order</a></li>
+<li class="active" ><a href="{% url 'vendor:activeOrders'%}" style = "font-weight: bold; font-size:30px">Active Order</a></li> 
+</ul>
+{% if orders %}
+	<h1> {{ orders.0.vendor.name }} </h1><br>
+	<ul class="list-group">
+	{% for order in orders %}
+		<li class="list-group-item"> {{ order.id }} , <script type="text/javascript"> var d=new Date({{order.orderTime}} * 1000); document.write(d.toLocaleString())</script> , {{ order.get_action_display }} , 
+		<a href="orderDetail?orderId={{ order.id }}"> Show Details </a> </li>
+	{% endfor %}
+	</ul>
+{% endif %}
+</body>
+</html>
+
+ 
+
