@@ -6,8 +6,8 @@ It allows to:
   View past orders  
   
 Prerequisites:  
-Python  
-Django  
+Python  2.7  
+Django version 1.6.5  
 Django-Celery for periodic task  
 
 How to start:  
