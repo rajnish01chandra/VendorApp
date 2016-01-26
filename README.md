@@ -16,7 +16,12 @@ python manage.py runserver
 python manage.py celerybeat -S djcelery.schedulers.DatabaseScheduler
 
 Urls:
+
 To fill dummy data
 http://localhost:8000/vendor/api/partner/order/fillDB
 
 To view all past orders:
+http://localhost:8000/vendor/api/partner/order/all
+
+To view all active orders:
+http://localhost:8000/vendor/api/partner/order/active
