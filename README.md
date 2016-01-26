@@ -11,6 +11,7 @@ Django version 1.6.5
 Django-Celery for periodic task  
 
 How to start:  
+Edit settings file for app...change database settings
 Create tables : $python manage.py syncdb  
 Start the server : $python manage.py runserver  
 Start celery for scheduling periodic task : $python manage.py celerybeat -S djcelery.schedulers.DatabaseScheduler  
